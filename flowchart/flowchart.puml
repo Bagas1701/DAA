@@ -1,0 +1,22 @@
+@startuml Data Menu Restoran
+start
+:Mulai;
+
+:Pelanggan Melihat Menu;
+:Pilih Menu yang Diinginkan;
+:Lihat Detail Menu;
+
+if (Apakah Menu Tersedia?) then (Ya)
+    :Tambah ke Keranjang Pesan;
+else (Tidak)
+    :Informasikan Menu Habis;
+    stop
+endif
+
+:Pelanggan Konfirmasi Pesanan;
+:Kasir Input Pesanan ke Sistem dan Mencetak Struk;
+:Pelanggan Membayar;
+:Kasir Mengupdate Status Menu Jika Perlu;
+
+stop
+@enduml

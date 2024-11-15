@@ -1,0 +1,25 @@
+@startuml Data Menu Restoran
+actor "Pelanggan" as Customer
+actor "Kasir" as Cashier
+actor "Admin" as Admin
+
+rectangle "Sistem Restoran" {
+    usecase "Melihat Menu" as ViewMenu
+    usecase "Memesan Makanan/Minuman" as PlaceOrder
+    usecase "Melihat Detail Menu" as ViewMenuDetails
+    usecase "Membayar Pesanan" as MakePayment
+    usecase "Mengelola Data Menu" as ManageMenu
+    usecase "Mengupdate Status Menu" as UpdateMenuStatus
+}
+
+Customer --> ViewMenu
+Customer --> PlaceOrder
+Customer --> ViewMenuDetails
+
+Cashier --> MakePayment
+Cashier --> UpdateMenuStatus
+
+Admin --> ManageMenu
+Admin --> UpdateMenuStatus
+
+@enduml

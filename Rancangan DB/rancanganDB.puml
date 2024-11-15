@@ -1,0 +1,43 @@
+@startuml Data Menu Restoran
+entity "kategori_menu" as kategori_menu {
+    +id_kategori : INT <<PK>>
+    +nama_kategori : VARCHAR(50)
+}
+
+entity "menu" as menu {
+    +id_menu : INT <<PK>>
+    +nama_menu : VARCHAR(100)
+    +deskripsi : TEXT
+    +harga : DECIMAL(10,2)
+    +id_kategori : INT <<FK>>
+    +status : ENUM('Tersedia', 'Habis')
+}
+
+entity "pesanan" as pesanan {
+    +id_pesanan : INT <<PK>>
+    +tanggal_pesanan : DATETIME
+    +total_harga : DECIMAL(10,2)
+}
+
+entity "detail_pesanan" as detail_pesanan {
+    +id_detail : INT <<PK>>
+    +id_pesanan : INT <<FK>>
+    +id_menu : INT <<FK>>
+    +jumlah : INT
+    +subtotal : DECIMAL(10,2)
+}
+
+entity "kasir" as kasir {
+    +id_kasir : INT <<PK>>
+    +nama_kasir : VARCHAR(100)
+    +username : VARCHAR(50)
+    +password : VARCHAR(100)
+}
+
+' Relationships
+kategori_menu ||--o| menu : "Memiliki"
+menu ||--o| detail_pesanan : "Dipesan dalam"
+pesanan ||--o| detail_pesanan : "Memiliki"
+kasir ||--o| pesanan : "Menangani"
+
+@enduml
